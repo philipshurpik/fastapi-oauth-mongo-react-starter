@@ -1,23 +1,29 @@
-# fastapi-mongo-starter
+# fastapi-oauth-mongo-react-starter
 
-Based on https://github.com/gaganpreet/fastapi-starter
+When building MVPs it's great to find some pre-setup boilerplate.   
+This starter kit is based on https://github.com/gaganpreet/fastapi-starter but with some improvements
+
+### Changes
+- PostgreSQL replaced with MongoDB and Beanie ODM<br>
+<em>Which makes it even more useful for MVPs and startups :) </em><br>
+<em>Conversion implemented using Cursor IDE (https://cursor.sh/) - it's really nice way to change code, recommend</em>
+- Added full Google OAuth authentication flow based on https://fastapi-users.github.io/fastapi-users/latest/configuration/oauth/ <br>
+<em>Was surprised, that there are not much documentation how to make full integration using fastapi-users and React frontend, so here it is</em>
 
 ## Features
 
 - FastAPI
 - FastAPI Users with Google OAuth
 - React Admin
-- MongoDB and Beanie
+- MongoDB and Beanie ODM
 - Pre-commit hooks (black, autoflake, isort, flake8, prettier)
 - Github Action
 - Docker images
 
-## Good to know
-
-The frontend of this project uses React Admin. Follow the quick tutorial to understand how [React Admin](https://marmelab.com/react-admin/Tutorial.html) works.
 
 ## Step 1: Getting started
 
+Copy env-template to .env file and setup appropriate secrets
 Start a local development instance with docker-compose
 
 ```bash
@@ -29,23 +35,17 @@ Now you can navigate to the following URLs:
 - Backend OpenAPI docs: http://localhost:8000/docs/
 - Frontend: http://localhost:3000
 
-### Step 2: Setup pre-commit hooks and database
+### Step 2: Local development
 
-Keep your code clean by using the configured pre-commit hooks. Follow the [instructions here to install pre-commit](https://pre-commit.com/). Once pre-commit is installed, run this command to install the hooks into your git repository:
-
+You can start all services separately. For example run mongodb:
 ```bash
-pre-commit install
+docker compose up mongodb
 ```
 
-Run all pre-commit hooks:
-```
-pre-commit run -a
-```
+The backend setup of docker compose is set to automatically reload the app whenever code is updated. 
+But for example you can always debug `python main.py` with PyCharm
 
-### Local development
-
-The backend setup of docker compose is set to automatically reload the app whenever code is updated. However, for frontend it's easier to develop locally.
-
+To develop frontend:
 ```bash
 cd frontend
 yarn
@@ -61,7 +61,20 @@ yarn start
 
 Don't forget to edit the `.env` file and update the `BACKEND_CORS_ORIGINS` value (add `http://mydomain:3000` to the allowed origins).
 
-### Local tests
+### Step 3: Pre-commit hooks
+
+Keep your code clean by using the configured pre-commit hooks. Follow the [instructions here to install pre-commit](https://pre-commit.com/). Once pre-commit is installed, run this command to install the hooks into your git repository:
+
+```bash
+pre-commit install
+```
+
+Run all pre-commit hooks:
+```
+pre-commit run -a
+```
+
+### Step 4: Local tests
 Frontend:
 ```bash
 cd frontend
@@ -104,8 +117,12 @@ Then you can run tests with this command:
 
 There's a monolith/single docker image that uses FastAPI to serve static assets. You can use this image to deploy directly to Heroku, Fly.io or anywhere where you can run a Dockerfile without having to build a complicated setup out of separate frontend and backend images.
 
-## Recipes
+### Recipes
 
 #### Build and upload docker images to a repository
 
 Configure the [**build-push-action**](https://github.com/marketplace/actions/build-and-push-docker-images) in `.github/workflows/test.yaml`.
+
+### Good to know
+
+The frontend of this project uses React Admin. Follow the quick tutorial to understand how [React Admin](https://marmelab.com/react-admin/Tutorial.html) works.
