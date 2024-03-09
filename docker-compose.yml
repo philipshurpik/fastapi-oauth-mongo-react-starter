@@ -1,0 +1,35 @@
+version: "3.9"
+
+services:
+  mongodb:
+    image: mongo:latest
+    restart: always
+    healthcheck:
+      test: ["CMD", "bash", "-c", "> /dev/tcp/localhost/27017"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build:
+      context: backend
+    ports:
+      - "8000:8000"
+    env_file: .env
+    depends_on:
+      mongodb:
+        condition: service_healthy
+
+  frontend:
+    build:
+      context: frontend
+    ports:
+      - "3000:80"
+    volumes:
+      - ./frontend:/app:delegated
+    environment:
+      - NODE_ENV=production
+
+volumes:
+  mongo-db-data:
+  root-home:

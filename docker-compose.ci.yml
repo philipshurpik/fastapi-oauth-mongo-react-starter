@@ -1,0 +1,8 @@
+version: "3.9"
+
+services:
+  backend:
+    image: "fastapi-mongo-starter-backend:latest"
+
+  frontend:
+    image: "fastapi-mongo-starter-frontend:latest"

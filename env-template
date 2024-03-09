@@ -1,0 +1,12 @@
+# MongoDB Configuration
+MONGODB_URL=mongodb://mongodb:27017/appdatabase
+MONGODB_DB_NAME=appdatabase
+
+TEST_MONGODB_URL=mongodb://mongodb:27017/apptest
+TEST_MONGODB_DB_NAME=apptest
+
+SECRET_KEY=CHANGE_ME
+BACKEND_CORS_ORIGINS='["http://localhost:3000","http://127.0.0.1:3000"]'
+
+GOOGLE_OAUTH_CLIENT_ID=google_client_id.apps.googleusercontent.com
+GOOGLE_OAUTH_CLIENT_SECRET=google_secret

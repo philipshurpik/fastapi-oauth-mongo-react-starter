@@ -1,0 +1,15 @@
+fastapi==0.99.1
+uvicorn==0.23.2
+pydantic==1.10.12
+requests==2.31.0
+gunicorn==21.2.0
+fastapi-users[beanie,oauth]==12.1.2
+bcrypt==4.0.1
+passlib[bcrypt]
+autoflake==2.3.0
+black==23.10.1
+pytest==7.4.3
+ipython==8.16.1
+pytest-cov==4.1.0
+httpx==0.24.1
+pytest-asyncio==0.21.1
