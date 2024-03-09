@@ -6,7 +6,7 @@ This starter kit is based on https://github.com/gaganpreet/fastapi-starter but w
 ### Changes
 - PostgreSQL replaced with MongoDB and Beanie ODM<br>
 <em>Which makes it even more useful for MVPs and startups :) </em><br>
-<em>Conversion implemented using Cursor IDE (https://cursor.sh/) - it's really nice way to change code, recommend</em>
+<em>Conversion implemented using Cursor IDE (https://cursor.sh/) - it's really nice way to rewrite code using AI, recommend</em>
 - Added full Google OAuth authentication flow based on https://fastapi-users.github.io/fastapi-users/latest/configuration/oauth/ <br>
 <em>Was surprised, that there are not much documentation how to make full integration using fastapi-users and React frontend, so here it is</em>
 
